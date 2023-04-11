@@ -131,6 +131,7 @@ class Input {
     } else {
       this._getLabelWidth();
       this._getLabelPositionInInputGroup();
+      this._toggleDefaultDatePlaceholder();
     }
   }
 
@@ -164,6 +165,22 @@ class Input {
       const actualLength = this.input.value.length;
       this._counterElement.innerHTML = `${actualLength} / ${this._maxLength}`;
     });
+  }
+
+  _toggleDefaultDatePlaceholder(input = this.input) {
+    const isTypeDate = input.getAttribute('type') === 'date';
+
+    if (!isTypeDate) {
+      return;
+    }
+
+    const isInputFocused = document.activeElement === input;
+
+    if (!isInputFocused && !input.value) {
+      input.style.opacity = 0;
+    } else {
+      input.style.opacity = 1;
+    }
   }
 
   _showPlaceholder() {
@@ -232,6 +249,7 @@ class Input {
       if (input.value !== '') {
         Manipulator.addClass(input, CLASSNAME_ACTIVE);
       }
+      this._toggleDefaultDatePlaceholder(input);
     });
   }
 
@@ -258,9 +276,11 @@ class Input {
 
   _deactivate(event) {
     const input = event ? event.target : this.input;
+
     if (input.value === '') {
       input.classList.remove(CLASSNAME_ACTIVE);
     }
+    this._toggleDefaultDatePlaceholder(input);
   }
 
   static activate(instance) {
@@ -296,6 +316,12 @@ class Input {
 
   static getInstance(element) {
     return Data.getData(element, DATA_KEY);
+  }
+
+  static getOrCreateInstance(element, config = {}) {
+    return (
+      this.getInstance(element) || new this(element, typeof config === 'object' ? config : null)
+    );
   }
 }
 
