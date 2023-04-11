@@ -1,6 +1,7 @@
 # nft-marketplace-starter-kit
-Please run npm install on the terminal to download the appropriate packages already defined to the package.json file. 
-Make sure you are in the source file. 
+
+Please run npm install on the terminal to download the appropriate packages already defined to the package.json file.
+Make sure you are in the source file.
 
 **Please ensure you have downloaded the following additionally **
 
@@ -17,3 +18,4 @@ https://www.udemy.com/course/the-complete-solidity-course-blockchain-zero-to-exp
 
 Good luck and have fun!
 
+## original code is [here](https://github.com/01Clarian/nft-marketplace-starter-kit)
