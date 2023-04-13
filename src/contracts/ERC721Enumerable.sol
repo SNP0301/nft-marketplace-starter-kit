@@ -2,41 +2,39 @@
 pragma solidity ^0.8.0;
 
 import './ERC721.sol';
+import './interfaces/IERC721Enumerable.sol';
 
-contract ERC721Enumberable is ERC721 {
+contract ERC721Enumberable is IERC721Enumerable, ERC721 {
     uint256[] private _allTokens;
 
     mapping (uint256 => uint256) private _allTokensIndex;
     mapping (address=>uint256[]) private _ownedTokens; 
     mapping (uint256=>uint256) private _ownedTokensIndex;
 
+     constructor(){
+        _registerInterface(bytes4(keccak256('totalSupply(bytes4)')^
+        keccak256('tokenByIndex(bytes4)')^
+        keccak256('tokenOfOwnerByIndex(bytes4)')));
+    }
 
 
 
 
-    function tokenOfOwnerByIndex(address owner, uint256 index) public view returns(uint256){
+    function tokenOfOwnerByIndex(address owner, uint256 index) public override view returns(uint256){
         require(index <balanceOf(owner),'owner index is out of range');
         return _ownedTokens[owner][index];
     }
 
-    function tokenByIndex(uint256 index) public view returns(uint256) {
+    function tokenByIndex(uint256 index) public override view returns(uint256) {
         require(index < totalSupply(), 'global index is out of range');
         return _allTokens[index];
     }
 
 
-    function totalSupply() public view returns (uint256){
+    function totalSupply() public override view returns (uint256){
         return _allTokens.length;
     }
 
-
-
-    //function tokenByIndex(uint256 _index) external view returns (uint256){}
-
-    
-
-    //function tokenOfOwnerByIndex(address _owner, uint256 _index) external view returns (uint256){}
-    
  
 
     function _mint(address to, uint256 tokenId) internal override(ERC721){
