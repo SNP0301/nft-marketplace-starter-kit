@@ -2,21 +2,23 @@
 pragma solidity ^0.8.0;
 
 import './ERC165.sol';
+import './interfaces/IERC721.sol';
 
-contract ERC721 is ERC165{
+contract ERC721 is ERC165, IERC721{
 
-    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+    // @dev deleted because it is defined in ./IERC721.sol
+    //event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
 
     mapping(uint256 => address) private _tokenOwner;
     mapping(address => uint256) private _OwnedTokensCount;
     mapping(uint256 => address) private _toeknApprovals;
 
-    function balanceOf(address _owner) public view returns(uint256) {
+    function balanceOf(address _owner) public override view returns(uint256) {
         require(_owner != address(0), 'owner query for non-existent ');
         return _OwnedTokensCount[_owner];
     }
 
-    function ownerOf(uint256 _tokenId) public view returns (address){
+    function ownerOf(uint256 _tokenId) public override view returns (address){
         address owner = _tokenOwner[_tokenId];
         require(owner != address(0), 'owner query for non-existent ');
         return owner;
@@ -49,7 +51,7 @@ contract ERC721 is ERC165{
 
     } 
 
-    function transferFrom(address _from, address _to, uint256 _tokenId) public {
+    function transferFrom(address _from, address _to, uint256 _tokenId) override public {
         _transferFrom (_from, _to, _tokenId); 
     }
 
