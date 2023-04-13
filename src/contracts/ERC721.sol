@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-    /*
-    
-    */
 
-contract ERC721{
+import './ERC165.sol';
+
+contract ERC721 is ERC165{
 
     event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
 
@@ -48,7 +47,7 @@ contract ERC721{
 
         emit Transfer(_from, _to, _tokenId);
 
-    }
+    } 
 
     function transferFrom(address _from, address _to, uint256 _tokenId) public {
         _transferFrom (_from, _to, _tokenId); 
