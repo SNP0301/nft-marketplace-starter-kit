@@ -40,7 +40,7 @@ class App extends Component {
       //let result = [];
 
       for (let i = 1; i <= totalSupply; i++) {
-        const KryptoBird = await contract.kryptoBirdz(i - 1).call();
+        const KryptoBird = await contract.methods.kryptoBirdz(i - 1).call();
 
         //result.push(kryptoBird);
         this.setState({ kryptoBirdz: [...this.state.kryptoBirdz, KryptoBird] });
@@ -73,6 +73,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        {console.log(this.state.kryptoBirdz)}
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
           <div
             className="navbar-brand col-sm-3 col-md-3 mr-0"
@@ -90,6 +91,41 @@ class App extends Component {
             </li>
           </ul>
         </nav>
+        <div className="container-fluid mt-1">
+          <div className="row">
+            <main role="main" className="col-lg-12 d-flex text-center">
+              <div
+                className="content mr-auto ml-auto"
+                stlye={{ opacity: "0.8" }}
+              >
+                <h1 className="display-3 mb-4" style={{ color: "blue" }}>
+                  Krypto Birdz NFTs
+                </h1>
+
+                <form
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    const kryptoBird = this.kryptoBird.value;
+
+                    this.mint(kryptoBird);
+                  }}
+                >
+                  <input
+                    type="text"
+                    placeholder="Add a file location"
+                    className="form-control mb-1"
+                    ref={(input) => (this.kryptoBird = input)}
+                  />
+                  <input
+                    type="submit"
+                    className="btn btn-primary"
+                    value="MINT"
+                  />
+                </form>
+              </div>
+            </main>
+          </div>
+        </div>
       </div>
     );
   }
