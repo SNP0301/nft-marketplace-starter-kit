@@ -31,7 +31,7 @@ class App extends Component {
   async loadBlockchainData() {
     const web3 = window.web3;
     const accounts = await web3.eth.getAccounts();
-    this.setState({ account: accounts });
+    this.setState({ account: accounts[0] });
     console.log(accounts);
 
     const networkId = await web3.eth.net.getId();
@@ -61,7 +61,7 @@ class App extends Component {
   mint = (kryptoBird) => {
     this.state.contract.methods
       .mint(kryptoBird)
-      .send({ from: this.state.account[0] })
+      .send({ from: this.state.account })
       .once("receipt", (receipt) => {
         this.setState({
           kryptoBirdz: [...this.state.kryptoBirdz, KryptoBird],
@@ -114,7 +114,6 @@ class App extends Component {
                   onSubmit={(event) => {
                     event.preventDefault();
                     const kryptoBird = this.kryptoBird.value;
-
                     this.mint(kryptoBird);
                   }}
                 >
@@ -132,6 +131,39 @@ class App extends Component {
                 </form>
               </div>
             </main>
+          </div>
+          <hr></hr>
+          <div className="row textCenter">
+            {this.state.kryptoBirdz.map((kryptoBird, key) => {
+              return (
+                <div>
+                  <div>
+                    <MDBCard
+                      className="token img"
+                      style={{ maxWidth: "22rem" }}
+                    >
+                      <MDBCardImage
+                        src={kryptoBird}
+                        position="top"
+                        height="250rem"
+                        style={{ marginRight: "4px" }}
+                      />
+                      <MDBCardBody>
+                        <MDBCardTitle> KryptoBirdz </MDBCardTitle>
+                        <MDBCardText>
+                          {" "}
+                          The KryptoBirdz are 20 uniquely generated KBirdz from
+                          the cyberpunk cloud galaxy Mystopia! There is only one
+                          of each bird and each bird can be owned by a single
+                          person on the Ethereum blockchain.{" "}
+                        </MDBCardText>
+                        <MDBBtn href={kryptoBird}>Download</MDBBtn>
+                      </MDBCardBody>
+                    </MDBCard>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
