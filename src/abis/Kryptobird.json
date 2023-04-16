@@ -14689,36 +14689,16 @@
   "ast": {
     "absolutePath": "project:/src/contracts/KryptoBirdz.sol",
     "exportedSymbols": {
-      "ERC165": [
-        54
-      ],
-      "ERC721": [
-        284
-      ],
-      "ERC721Connector": [
-        305
-      ],
-      "ERC721Enumberable": [
-        477
-      ],
-      "ERC721Metadata": [
-        537
-      ],
-      "IERC165": [
-        607
-      ],
-      "IERC721": [
-        651
-      ],
-      "IERC721Enumerable": [
-        675
-      ],
-      "IERC721Metadata": [
-        688
-      ],
-      "KryptoBird": [
-        597
-      ]
+      "ERC165": [54],
+      "ERC721": [284],
+      "ERC721Connector": [305],
+      "ERC721Enumberable": [477],
+      "ERC721Metadata": [537],
+      "IERC165": [607],
+      "IERC721": [651],
+      "IERC721Enumerable": [675],
+      "IERC721Metadata": [688],
+      "KryptoBird": [597]
     },
     "id": 598,
     "license": "MIT",
@@ -14726,12 +14706,7 @@
     "nodes": [
       {
         "id": 539,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "32:23:5"
       },
@@ -14754,9 +14729,7 @@
             "baseName": {
               "id": 541,
               "name": "ERC721Connector",
-              "nameLocations": [
-                "113:15:5"
-              ],
+              "nameLocations": ["113:15:5"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 305,
               "src": "113:15:5"
@@ -14966,10 +14939,7 @@
                       "id": 554,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "278:7:5",
                       "typeDescriptions": {
@@ -15067,9 +15037,7 @@
                   "src": "365:29:5"
                 },
                 {
-                  "assignments": [
-                    569
-                  ],
+                  "assignments": [569],
                   "declarations": [
                     {
                       "constant": false,
@@ -15221,9 +15189,7 @@
                       "id": 575,
                       "name": "_mint",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        433
-                      ],
+                      "overloadedDeclarations": [433],
                       "referencedDeclaration": 433,
                       "src": "447:5:5",
                       "typeDescriptions": {
@@ -15430,9 +15396,7 @@
                 "modifierName": {
                   "id": 590,
                   "name": "ERC721Connector",
-                  "nameLocations": [
-                    "546:15:5"
-                  ],
+                  "nameLocations": ["546:15:5"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 305,
                   "src": "546:15:5"
