@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import KryptoBird from "../abis/Kryptobird.json";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardImage,
+  MDBBtn,
+} from "mdb-react-ui-kit";
 
 class App extends Component {
   async componentDidMount() {
@@ -54,7 +62,7 @@ class App extends Component {
     this.state.contract.methods
       .mint(kryptoBird)
       .send({ from: this.state.account[0] })
-      .once("recipt", (receipt) => {
+      .once("receipt", (receipt) => {
         this.setState({
           kryptoBirdz: [...this.state.kryptoBirdz, KryptoBird],
         });
